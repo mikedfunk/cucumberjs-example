@@ -14,3 +14,7 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
 * add a [cucumber world file](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/support/world.js) in `features/support/world.js` to set up the browser and assertion lib in all tests.
 * start phantomjs and run tests per usage instructions above.
 * Replace  `callback.pending();` calls with [selenium-webdriver](http://www.seleniumhq.org/docs/03_webdriver.jsp) api calls to go to urls, click things, etc. check values with [chai.expect](http://chaijs.com/api/bdd/).
+
+## Todo
+
+- [ ] write working tests for feature step definitions

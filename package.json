@@ -12,6 +12,6 @@
     "chai": "^2.3.0",
     "cucumber": "^0.4.9",
     "phantomjs": "^1.9.16",
-    "selenium-webdriver": "^2.45.1"
+    "webdriverio": "^2.4.5"
   }
 }

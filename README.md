@@ -15,4 +15,4 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
 * start phantomjs and run tests per usage instructions above.
 * Replace  `callback.pending();` calls with [webdriverio](http://webdriver.io) api calls to go to urls, click things, etc.
 * Replace `callback` in the function params with `next`. It makes a lot more sense.
-* Assert with `chai.expect(value).to.equal(expected);`. When a test fails, it will throw an Error and stop that step. Call `next()` after all expectations are set. If all passes it will get to `next()` and continue.
+* Assert with `chai.expect(value).to.equal(expected);`. Chai has [other tests](http://chaijs.com/api/) too. When a test fails, it will throw an Error and stop that step. Call `next()` after all expectations are set. If all passes it will get to `next()` and continue.

@@ -8,7 +8,7 @@ module.exports = function () {
   this.When(/^I visit google\.com$/, function (next) {
     // visit a page (baseUrl is set in wdio.conf.js)
     browser.url('/').then(function() {
-      // tell cucumber this test passes
+      // tell cucumber to continue
       next();
     });
   });

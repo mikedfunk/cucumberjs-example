@@ -23,11 +23,11 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
 * add a [cucumber world
   file](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/support/world.js)
   in `features/support/world.js` to set up chai in all tests. If you want.
-* Replace  `callback.pending();` calls with [webdriverio](http://webdriver.io)
-  api calls to go to urls, click things, etc. By running cucumber through wdio
+* Replace  `callback.pending();` calls with [webdriverio
+  api calls](http://webdriver.io/api.html) to go to urls, click things, etc. By running cucumber through wdio
   you get `browser` defined as a global, so you can just call
   `browser.url('sub-url here').then(...)`,
-  `browser.getText('selector').then(...)`, etc. inside your spec definitions
+  `browser.getText('selector').then(...)`, etc. inside your spec definitions. ([full api docs](http://webdriver.io/api.html))
 * Replace `callback` in the function params with `next`. It makes a lot more
   sense.
 * Assert with `this.expect(value).to.equal(expected);`. Chai has [other

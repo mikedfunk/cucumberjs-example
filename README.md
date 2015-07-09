@@ -9,6 +9,8 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
 ## Usage in other projects
 * `npm init` and hit enter a bunch
 * `npm install --save-dev cucumber phantomjs webdriverio chai`
+* `./node_modules/.bin/wdio config` to walk through a wizard and define your
+  webdriverio config. Sweet!
 * create a `features` directory and write
   [gherkin](http://docs.behat.org/en/latest/guides/1.gherkin.html) features
   there
@@ -20,7 +22,7 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
   here](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/step-definitions/GoogleTitleTestSpec.js))
 * add a [cucumber world
   file](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/support/world.js)
-  in `features/support/world.js` to set up chai in all tests.
+  in `features/support/world.js` to set up chai in all tests. If you want.
 * Replace  `callback.pending();` calls with [webdriverio](http://webdriver.io)
   api calls to go to urls, click things, etc. By running cucumber through wdio
   you get `browser` defined as a global, so you can just call

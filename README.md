@@ -24,8 +24,8 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
 * Replace  `callback.pending();` calls with [webdriverio](http://webdriver.io)
   api calls to go to urls, click things, etc. By running cucumber through wdio
   you get `browser` defined as a global, so you can just call
-  `browser.url('sub-url here')`, `browser.getText('selector')`, etc. inside
-  your spec definitions
+  `browser.url('sub-url here').then(...)`,
+  `browser.getText('selector').then(...)`, etc. inside your spec definitions
 * Replace `callback` in the function params with `next`. It makes a lot more
   sense.
 * Assert with `this.expect(value).to.equal(expected);`. Chai has [other

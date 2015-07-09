@@ -4,7 +4,7 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
 ## Usage
 * `npm install` to install dependencies
 * `./node_modules/.bin/phantomjs --webdriver=4444` to start phantomjs
-* `./node_modules/.bin/wdio wdio.conf.js` to run tests
+* `./node_modules/.bin/wdio` to run tests. It will use the `wdio.conf.js` config file by default.
 
 ## Usage in other projects
 * `npm init` and hit enter a bunch
@@ -14,7 +14,7 @@ Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumbe
 * create a `features` directory and write
   [gherkin](http://docs.behat.org/en/latest/guides/1.gherkin.html) features
   there
-* `./node_modules/.bin/wdio wdio.conf.js` to run tests. It will give you
+* `./node_modules/.bin/wdio` to run tests. It will give you
   snippets from your features to put in spec files. You can put them in
   `features/step-definitions/WhateverSpec.js`. Each spec file needs to contain
   an exported function via module.exports, CommonJs style. Put snippets in that

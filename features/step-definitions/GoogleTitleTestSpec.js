@@ -26,6 +26,6 @@ module.exports = function () {
         this.expect(value).to.match(/Google/);
 
         // next() doesn't work within the promise for some reason but this does
-      }.bind(this)).then(function() { next(); });
+      }.bind(this)).call(next);
   });
 };

@@ -65,7 +65,7 @@ Fix it with the `.bind(this)` part below:
 ```javascript
 browser.getText('form[name="register"]').then(function(text) {
   this.expect(text).to.not.be.empty;
-}.bind(this)).then(function() { next(); });
+}.bind(this)).call(next);
 ```
 
 I've also had problems with PhantomJS and JSPM. The PhantomJS browser crashes

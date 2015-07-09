@@ -1,5 +1,8 @@
 # Cucumberjs example
-Just a simple implementation of [cucumberjs](https://github.com/cucumber/cucumber-js) with [phantomjs](http://phantomjs.org/), [chai](http://chaijs.com), and [webdriverio](http://webdriver.io).
+Just a simple implementation of
+[cucumberjs](https://github.com/cucumber/cucumber-js) with
+[phantomjs](http://phantomjs.org/), [chai](http://chaijs.com), and
+[webdriverio](http://webdriver.io).
 
 ## Usage
 * `npm install` to install dependencies

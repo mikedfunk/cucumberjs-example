@@ -73,3 +73,5 @@ when it encounters JSPM. I just run it in a real browser instead. Apparently
 PhantomJS uses an old version of webkit that does not work with Traceur and 
 probably Babel either. [Github issue
 here](https://github.com/google/traceur-compiler/issues/908).
+
+Don't call `next()` twice in a step! It will confuse cucumber and confuse the shit out of you because steps will be firing out of sequence, even in the wrong scenarios. Took me forever to find this.

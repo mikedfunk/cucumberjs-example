@@ -39,3 +39,34 @@ Just a simple implementation of
   way I could get next working in promises was via `.then(...).call(next);`. If
   all passes it will continue to the next step definition.
 * start phantomjs and run tests per usage instructions above.
+
+## Gotchas
+In a step definition this will cause trouble because the next step will try to
+execute whether or not the browser has finished loading the page. You will
+probably encounter a race condition. Instead, use the promise `.then()` method:
+
+```javascript
+module.exports = function() {
+
+  this.When(/^I visit the homepage$/, function (next) {
+    // bad!
+    browser.url('/');
+    next();
+
+    // good!
+    browser.url('/').then(function() { next(); });
+  });
+};
+```
+
+`this` from `world.js` is available in each step definition, but once you get
+to a promise or callback from the webdriverio api `this` is something different.
+Fix it with the `.bind(this)` part below:
+```javascript
+browser.getText('form[name="register"]').then(function(text) {
+  this.expect(text).to.not.be.empty;
+}.bind(this)).then(function() { next(); });
+```
+
+I've also had problems with PhantomJS and JSPM. The PhantomJS browser crashes
+when it encounters JSPM. I just run it in a real browser instead.

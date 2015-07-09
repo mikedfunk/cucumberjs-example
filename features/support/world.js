@@ -1,21 +1,17 @@
 (function (module) {
-  'use strict';
+  var webdriverio,
+  chai,
+  World;
 
   // get dependencies
-  var webdriverio = require('webdriverio');
-  var chai = require('chai');
+  webdriverio = require('webdriverio');
+  chai = require('chai');
 
   // cucumber world
-  var World = function () {
-    this.World = function (callback) {
+  World = function () {
+    this.World = function (next) {
 
       // this.whatever becomes available as this.whatever in cucumber steps
-
-      /**
-       * save the currently visited page
-       * @type {object}
-       */
-      this.page = null;
 
       /**
        * the chai assertion lib
@@ -23,30 +19,8 @@
        */
       this.expect = chai.expect;
 
-      // specify browser for webdriverio
-      var webdriverOptions = {
-          desiredCapabilities: {
-              browserName: 'phantomjs'
-          }
-      };
-
-      /**
-       * set the current instantiated browser
-       * @type {object}
-       */
-      this.browser = webdriverio.remote(webdriverOptions).init();
-
-      /**
-       * get a page by url
-       * @param {string} urlj
-       * @return {object} webdriverio instance
-       */
-      this.getPage = function (url) {
-        return this.browser.url(url);
-      };
-
       // tell cucumber we're done assigning stuff
-      callback();
+      next();
     };
   };
 

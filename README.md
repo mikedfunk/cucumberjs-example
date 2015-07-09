@@ -75,3 +75,5 @@ probably Babel either. [Github issue
 here](https://github.com/google/traceur-compiler/issues/908).
 
 Don't call `next()` twice in a step! It will confuse cucumber and confuse the shit out of you because steps will be firing out of sequence, even in the wrong scenarios. Took me forever to find this.
+
+The [`yield` ES6 generator method](https://github.com/webdriverio/webdriverio/blob/master/examples/runner-specs/jasmine.spec.js) of using the webdriverio API doesn't work unless you compile down with babel/traceur.

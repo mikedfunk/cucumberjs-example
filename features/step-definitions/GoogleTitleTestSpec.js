@@ -1,3 +1,5 @@
+/*eslint new-cap:0*/
+/*global browser */
 module.exports = function () {
   this.Given(/^I am not logged in$/, function (next) {
     next();
@@ -13,11 +15,10 @@ module.exports = function () {
   this.Then(/^I should see Google in the title$/, function (next) {
 
     // get the page title
-    var that = this;
-    browser.getTitle().
+    var _this = this;
+    browser.getText('body').
       then(function(value) {
-        console.log("value", value);
-        that.expect(value).to.equal('Google');
+        _this.expect(value).to.match(/Google/);
       }).call(next);
   });
 };

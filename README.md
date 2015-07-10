@@ -43,7 +43,7 @@ Just a simple implementation of
 ## Gotchas
 In a step definition this will cause trouble because the next step will try to
 execute whether or not the browser has finished loading the page. You will
-probably encounter a race condition. Instead, use the promise `.then()` method:
+probably encounter a race condition. Instead, use the `call()` method:
 
 ```javascript
 module.exports = function() {
@@ -54,7 +54,7 @@ module.exports = function() {
     next();
 
     // good!
-    browser.url('/').then(function() { next(); });
+    browser.url('/').call(next);
   });
 };
 ```

@@ -26,13 +26,13 @@ Just a simple implementation of
   here](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/step-definitions/GoogleTitleTestSpec.js))
 * add a [cucumber world
   file](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/support/world.js)
-  in `features/support/world.js` to set up chai in all tests. If you want.
+  in `features/support/world.js` to set up chai in all tests. If you want. Or if you have one step definitions file you can just define your dependencies at the top.
 * Replace  `callback.pending();` calls with [webdriverio
   api calls](http://webdriver.io/api.html) to go to urls, click things, etc. By running cucumber through wdio
   you get `browser` defined as a global, so you can just call
   `browser.url('sub-url here').then(...)`,
   `browser.getText('selector').then(...)`, etc. inside your spec definitions. ([full api docs](http://webdriver.io/api.html))
-* Replace `callback` in the function params with `next`. It makes a lot more
+* Replace `callback` in the function params with `next` or `done`. It makes a lot more
   sense.
 * Assert with `this.expect(value).to.equal(expected);`. Chai has [other
   tests](http://chaijs.com/api/) too. When a test fails, it will throw an Error

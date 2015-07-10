@@ -8,6 +8,7 @@ Just a simple implementation of
 * `npm install` to install dependencies
 * `./node_modules/.bin/phantomjs --webdriver=4444` to start phantomjs
 * `./node_modules/.bin/wdio` to run tests. It will use the `wdio.conf.js` config file by default.
+* `./node_modules/.bin/cucumber-js` will fail without the webdriver wrapper config but if you have steps in your features that aren't defined it will spit out boilerplate code to drop into your step definitions. Handy! (This is the main reason I prefer cucumber to [Yadda](https://github.com/acuminous/yadda))
 
 ## Usage in other projects
 * `npm init` and hit enter a bunch

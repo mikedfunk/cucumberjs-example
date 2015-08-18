@@ -70,10 +70,21 @@ module.exports = function() {
 to a promise or callback from the webdriverio api `this` is something different.
 Fix it with the `.bind(this)` part below:
 ```javascript
+// option 1
 browser.getText('form[name="register"]').then(function(text) {
+  // `this` refers to the parent context now since the `.bind()` below
   this.expect(text).to.not.be.empty;
   next();
 }.bind(this)).catch(function (err) {
+  next.err();
+});
+
+// option 2
+var _this = this;
+browser.getText('form[name="register"]').then(function(text) {
+  _this.expect(text).to.not.be.empty;
+  next();
+}).catch(function (err) {
   next.err();
 });
 ```

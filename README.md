@@ -44,18 +44,24 @@ Just a simple implementation of
 ## Gotchas
 In a step definition this will cause trouble because the next step will try to
 execute whether or not the browser has finished loading the page. You will
-probably encounter a race condition. Instead, use the `call()` method:
+probably encounter a race condition. Instead, use the `.then()` method:
 
 ```javascript
 module.exports = function() {
 
   this.When(/^I visit the homepage$/, function (next) {
+  
     // bad!
     browser.url('/');
     next();
 
     // good!
-    browser.url('/').call(next);
+    browser.url('/').then(function () {
+      next();
+    }).catch(function (err) {
+      next(err);
+    });
+    
   });
 };
 ```
@@ -66,7 +72,10 @@ Fix it with the `.bind(this)` part below:
 ```javascript
 browser.getText('form[name="register"]').then(function(text) {
   this.expect(text).to.not.be.empty;
-}.bind(this)).call(next);
+  next();
+}.bind(this)).catch(function (err) {
+  next.err();
+});
 ```
 
 I've also had problems with PhantomJS and JSPM. The PhantomJS browser crashes

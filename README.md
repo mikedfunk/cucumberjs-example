@@ -72,7 +72,7 @@ Fix it with the `.bind(this)` part below:
 ```javascript
 // option 1
 browser.getText('form[name="register"]').then(function(text) {
-  // `this` refers to the parent context now since the `.bind()` below
+  // `this` refers to the parent context now because of the `.bind()` below
   this.expect(text).to.not.be.empty;
   next();
 }.bind(this)).catch(function (err) {
@@ -80,6 +80,8 @@ browser.getText('form[name="register"]').then(function(text) {
 });
 
 // option 2
+// this is useful when you go several layers deep in functions and
+// you don't want to keep calling `.bind()` for each one
 var _this = this;
 browser.getText('form[name="register"]').then(function(text) {
   _this.expect(text).to.not.be.empty;
@@ -88,12 +90,6 @@ browser.getText('form[name="register"]').then(function(text) {
   next.err();
 });
 ```
-
-I've also had problems with PhantomJS and JSPM. The PhantomJS browser crashes
-when it encounters JSPM. I just run it in a real browser instead. Apparently
-PhantomJS uses an old version of webkit that does not work with Traceur and 
-probably Babel either. [Github issue
-here](https://github.com/google/traceur-compiler/issues/908).
 
 Don't call `next()` twice in a step! It will confuse cucumber and confuse the shit out of you because steps will be firing out of sequence, even in the wrong scenarios. Took me forever to find this.
 

@@ -15,18 +15,21 @@ Just a simple implementation of
 * `npm install --save-dev cucumber phantomjs webdriverio chai`
 * `./node_modules/.bin/wdio config` to walk through a wizard and define your
   webdriverio config. Sweet!
+ * choose cucumber for the framework aka test runner
+ * set the reporter to spec
+ * set the logging verbosity to verbose
+ * set the base url accordingly
 * create a `features` directory and write
   [gherkin](http://docs.behat.org/en/latest/guides/1.gherkin.html) features
-  there
-* `./node_modules/.bin/wdio` to run tests. It will give you
-  snippets from your features to put in spec files. You can put them in
-  `features/step-definitions/WhateverSpec.js`. Each spec file needs to contain
+  there such as `features/MyCoolFeature.feature`
+* run `./node_modules/.bin/cucumber-js` It will check your feature files for step definitions that you don't have code for and   spit out example snippets for those. You can put them in
+  `features/step-definitions/Whatever.js`. Each definition file needs to contain
   an exported function via module.exports, CommonJs style. Put snippets in that
   function. ([example
   here](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/step-definitions/GoogleTitleTestSpec.js))
 * add a [cucumber world
   file](https://github.com/mikedfunk/cucumberjs-example/blob/master/features/support/world.js)
-  in `features/support/world.js` to set up chai in all tests. If you want. Or if you have one step definitions file you can just define your dependencies at the top.
+  in `features/support/world.js` to set up chai in all tests. If you want. Or if you have one step definitions file you can      just define your dependencies at the top.
 * Replace  `callback.pending();` calls with [webdriverio
   api calls](http://webdriver.io/api.html) to go to urls, click things, etc. By running cucumber through wdio
   you get `browser` defined as a global, so you can just call
@@ -40,6 +43,8 @@ Just a simple implementation of
   way I could get next working in promises was via `.then(...).call(next);`. If
   all passes it will continue to the next step definition.
 * start phantomjs and run tests per usage instructions above.
+* `./node_modules/.bin/wdio` to run tests. `./node_modules/.bin/cucumber-js` will not actually run tests directly because it is
+  not configured directly, it's wrapped by webdriverio.
 
 ## Gotchas
 In a step definition this will cause trouble because the next step will try to
